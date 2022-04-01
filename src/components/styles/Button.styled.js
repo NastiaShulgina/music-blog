@@ -8,12 +8,12 @@ export const StyledButton = styled.button`
     padding: 0.8rem 1.6rem;
     transition: 0.25s;
     border-color: ${props => props.brColor || "#fff1e6"};
+    background-color: ${props => props.bgColor || "none"};
     color: ${props => props.color || "#fff1e6"};
     max-width: ${props => props.maxWidth || "100%"};
     align-self: ${props => props.alignSelf || "center"};
 
-    &:hover,
-    &:focus { 
+    &:hover { 
         cursor: pointer;
         transform: translateY(-0.25em);
     }

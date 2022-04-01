@@ -14,10 +14,10 @@ const Footer = () => {
                     <i>© All rights reserved</i>
                 </div>
                 <div className="social-media">
-                    <img src={telegram} alt="telegram" />
-                    <img src={instagram} alt="instagram" />
-                    <img src={facebook} alt="facebook" />
-                    <img src={tiktok} alt="tik tok" />
+                    <a href="https://t.me/nastiashulgina"><img src={telegram} alt="telegram" /></a>
+                    <a href="https://instagram.com/tatristefille?utm_medium=copy_link"><img src={instagram} alt="instagram" /></a>
+                    <a href="https://www.facebook.com/nastia.shulgina.7"><img src={facebook} alt="facebook" /></a>
+                    <a href="https://vm.tiktok.com/ZMLfskC54/"><img src={tiktok} alt="tik tok" /></a>
                 </div>
             </div>
         </StyledFooter>

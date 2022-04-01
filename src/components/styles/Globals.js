@@ -5,16 +5,8 @@ const GlobalStyles = createGlobalStyle`
 
     html, body {
         height: 100%;
-    }
-
-    .wrapper {
-        min-height: 100vh;
-        display: flex;
-        flex-direction: column;
-    }
-
-    .main {
-        flex: 1 1 auto;
+        margin: 0;
+        padding: 0;
     }
 
     * {
@@ -27,6 +19,14 @@ const GlobalStyles = createGlobalStyle`
         font-size: 20px;
         font-weight: lighter;
         color: #fff1e6;
+    }
+
+    hr {
+        margin: 20px 0;
+        padding: 0;
+        height: 0;
+        border: none;
+        border-top: 1px solid #333
     }
 `
 
