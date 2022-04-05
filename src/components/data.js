@@ -60,22 +60,23 @@ export const albums = generateAlbums();
 
 export function generateSongs() {
     const justSongs = [
-        { id: 1, name: 'Do I wanna know?', album: 'AM', language: 'EN', chorus: "Crawlin' back to you\nEver thought of callin' when\nYou've had a few?\n'Cause I always do", audiofile: doIWannaKnow },
-        { id: 2, name: 'New Song', album: 'Il ballo della vita', language: 'EN', chorus: "You got me trapped in your my mind\nBut tonight, I won't be yours", audiofile: newSong },
-        { id: 3, name: 'Feel Good Inc.', album: 'Demon Days', language: 'EN', chorus: "Windmill, windmill for the land\nTurn forever, hand in hand\nTake it all in on your stride\nIt is ticking, falling down", audiofile: feelGood },
-        { id: 4, name: 'Left with a Gun', album: 'Oracolo', language: 'EN', chorus: "Don't take it for granted\nOr your life, it will be slanted\nAnd the chances you are left with are gone", audiofile: leftWithAGun },
-        { id: 5, name: 'Dolce vita', album: 'Dolce vita', language: 'UA', chorus: "Кому тут тюрма,\nКому – дольче вiта", audiofile: dolceVita },
-        { id: 6, name: 'Sweater Weather', album: 'I Love You', language: 'EN', chorus: "She knows what I think about\nAnd what I think about\nOne love, two mouths\nOne love, one house\nNo shirt, no blouse", audiofile: sweaterWeather },
-        { id: 7, name: 'EARTHQUAKE', album: 'IGOR', language: 'EN', chorus: "'Cause you make my earth quake\nOh, you make my earth quake", audiofile: earthquake },
-        { id: 8, name: 'Torna a casa', album: 'Il ballo della vita', language: 'IT', chorus: "Quindi Marlena torna a casa\nChe il freddo qua si fa sentire\nQuindi Marlena torna a casa\nChe non voglio più aspettare", audiofile: tornaACasa },
-        { id: 9, name: '18 хвилин', album: 'Dolce vita', language: 'UA', chorus: "Ми так ховалися вiд зими\n18 хвилин назад!\nЛистопад, стали видимими знов.", audiofile: minutes18 },
-        { id: 10, name: "Way down we go", album: 'A / B', language: 'EN', chorus: "Say way down we go\n'Cause they will run you down, down 'til you fall\nWay down we go, ooh", audiofile: wayDownWeGo },
-        { id: 11, name: "505", album: 'Favourite Worst Nightmare', language: 'EN', chorus: "I'm going back to 505\nIf it's a seven-hour flight or a forty-five-minute drive\nIn my imagination, you're waiting lying on your side", audiofile: the505 },
+        { id: 1, year: 2013, name: 'Do I wanna know?', album: 'AM', language: 'EN', chorus: "Crawlin' back to you\nEver thought of callin' when\nYou've had a few?\n'Cause I always do", audiofile: doIWannaKnow },
+        { id: 2, year: 2018, name: 'New Song', album: 'Il ballo della vita', language: 'EN', chorus: "You got me trapped in your my mind\nBut tonight, I won't be yours", audiofile: newSong },
+        { id: 3, year: 2005, name: 'Feel Good Inc.', album: 'Demon Days', language: 'EN', chorus: "Windmill, windmill for the land\nTurn forever, hand in hand\nTake it all in on your stride\nIt is ticking, falling down", audiofile: feelGood },
+        { id: 4, year: 2015, name: 'Left with a Gun', album: 'Oracolo', language: 'EN', chorus: "Don't take it for granted\nOr your life, it will be slanted\nAnd the chances you are left with are gone", audiofile: leftWithAGun },
+        { id: 5, year: 2010, name: 'Dolce vita', album: 'Dolce vita', language: 'UA', chorus: "Кому тут тюрма,\nКому – дольче вiта", audiofile: dolceVita },
+        { id: 6, year: 2013, name: 'Sweater Weather', album: 'I Love You', language: 'EN', chorus: "She knows what I think about\nAnd what I think about\nOne love, two mouths\nOne love, one house\nNo shirt, no blouse", audiofile: sweaterWeather },
+        { id: 7, year: 2019, name: 'EARTHQUAKE', album: 'IGOR', language: 'EN', chorus: "'Cause you make my earth quake\nOh, you make my earth quake", audiofile: earthquake },
+        { id: 8, year: 2018, name: 'Torna a casa', album: 'Il ballo della vita', language: 'IT', chorus: "Quindi Marlena torna a casa\nChe il freddo qua si fa sentire\nQuindi Marlena torna a casa\nChe non voglio più aspettare", audiofile: tornaACasa },
+        { id: 9, year: 2010, name: '18 хвилин', album: 'Dolce vita', language: 'UA', chorus: "Ми так ховалися вiд зими\n18 хвилин назад!\nЛистопад, стали видимими знов.", audiofile: minutes18 },
+        { id: 10, year: 2015, name: "Way down we go", album: 'A / B', language: 'EN', chorus: "Say way down we go\n'Cause they will run you down, down 'til you fall\nWay down we go, ooh", audiofile: wayDownWeGo },
+        { id: 11, year: 2007, name: "505", album: 'Favourite Worst Nightmare', language: 'EN', chorus: "I'm going back to 505\nIf it's a seven-hour flight or a forty-five-minute drive\nIn my imagination, you're waiting lying on your side", audiofile: the505 },
     ]
 
     const songs = justSongs.map(song => {
         song.artist = albums.find(e => e.name === song.album).artist
         song.photoUrl = ALBUM_PHOTOS[song.album]
+        song.liked = false
         return song;
     })
     return songs;

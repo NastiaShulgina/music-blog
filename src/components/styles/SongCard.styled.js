@@ -2,10 +2,10 @@ import styled from "styled-components";
 
 export const StyledSongCard = styled.div`
     white-space: pre-wrap;
-    width: 15%;
+    width: 18%;
 
     box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.5);
-    max-width: 300px;
+    max-width: 330px;
     margin: 10px 40px;
     text-align: center;
     min-height: max-content;
@@ -42,6 +42,9 @@ export const StyledSongCard = styled.div`
         bottom: 0;
     }
 
+    span {
+        font-size: 15px;
+    }
     /* button {
         border: none;
         outline: 0;

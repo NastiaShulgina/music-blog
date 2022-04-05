@@ -11,7 +11,17 @@ export const StyledSongDetails = styled.div`
         border-radius: 50%;
         background-color: blue;
     } */
-    
+    .left {
+        justify-content: space-between;
+    }
+
+    .heart {
+        position: absolute;
+        width: 40px;
+        margin: -20px auto auto 155px;
+        opacity: 0.8;
+    }
+
     .details {
         height: 350px;
         align-self: center;

@@ -3,16 +3,32 @@ import { songs } from "./data";
 import { StyledSongDetails } from "./styles/SongDetails.styled";
 import { StyledButton } from "./styles/Button.styled";
 import { Link } from "react-router-dom";
-import like from "../images/like.svg"
+import heart from "../images/heart.png";
+import { useState } from "react";
 
 const SongDetails = () => {
     const { id } = useParams();
     const song = songs.find(s => s.id === Number(id))
 
+    const [likedState, setLikedState] = useState(song.liked);
+
+    function changeLikedState() {
+        // console.log(song);
+        // console.log(likedState, song.liked);
+        setLikedState(!likedState)
+        song.liked = likedState
+        // console.log(likedState, song.liked);
+    }
+
+    const ifNotLiked = "Listen later";
+    const ifLiked = "Remove from my playlist";
+
     return (
         <StyledSongDetails>
-            <div>
-                <img src={song.photoUrl} alt="album-photo" />
+            <div className="left">
+                {song.liked === false || 
+                <img src={heart} alt="You liked this song." className="heart"/>}
+                <img src={song.photoUrl} alt="album" />
                 <audio controls
                     src={song.audiofile}
                     type="audio/mpeg">
@@ -31,11 +47,11 @@ const SongDetails = () => {
                 </div>
                 <div className="buttons">
                     <Link to="/catalog"><StyledButton brColor="#950740">Go back</StyledButton></Link>
-                    <Link to="/catalog"><StyledButton brColor="#C3073F">Listen later</StyledButton></Link>
-                    {/* <img className="like" src={like} alt="like" /> */}
+                    <StyledButton brColor="#C3073F" onClick={() => changeLikedState()}>
+                        {song.liked === false ? ifNotLiked : ifLiked}
+                    </StyledButton>
                 </div>
             </div>
-
         </StyledSongDetails>
     );
 }

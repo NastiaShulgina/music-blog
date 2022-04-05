@@ -2,6 +2,7 @@ import { songs } from './data';
 import Form from './Form';
 import { StyledCatalog } from "./styles/Catalog.styled.js";
 import SongCard from './SongCard';
+import { useState, useEffect } from 'react';
 
 
 function filterSongs(songs, filters) {
@@ -19,6 +20,26 @@ function filterSongs(songs, filters) {
     return filteredSongs
 }
 
+let sortedSongs = []
+function sortSongs(filteredSongs, sortOrder) {
+    if (sortOrder === "") return filteredSongs
+    else if (sortOrder === "Newest to oldest") {
+        sortedSongs = filteredSongs.concat().sort((a, b) =>  b.year - a.year);
+        return sortedSongs
+    } else {
+        sortedSongs = filteredSongs.concat().sort((a, b) =>  a.year - b.year);
+        return sortedSongs
+    }
+}
+
+// function isMoreThanOneYear(sortedSongs) {
+//     console.log(sortedSongs);
+//     let yearSet = new Set();
+//     sortedSongs.forEach(song => yearSet.add(song.year))
+//     console.log(yearSet);
+//     return yearSet.size > 1
+// }
+
 const Catalog = ({ searchTerm, artist, setArtist, album, setAlbum, language, setLanguage }) => {
     const filters = {
         searchTermFilter: searchTerm,
@@ -27,13 +48,22 @@ const Catalog = ({ searchTerm, artist, setArtist, album, setAlbum, language, set
         languageFilter: language
     }
 
+    const [sortOrder, setSortOrder] = useState("");
+
+    useEffect(() => {
+        setArtist("")
+        setAlbum("")
+        setSortOrder("")
+        setLanguage("")
+    }, [])
+
     return (
         <StyledCatalog>
             <hr />
-            <Form artist={artist} setArtist={setArtist} setAlbum={setAlbum} setLanguage={setLanguage}/>
+            <Form artist={artist} album={album} sortOrder={sortOrder} setArtist={setArtist} setAlbum={setAlbum} setSortOrder={setSortOrder} setLanguage={setLanguage} />
             <br /><hr />
             <div className="songs">
-                {filterSongs(songs, filters).map(song => <SongCard song={song} key={song.id} />)}
+                { sortSongs(filterSongs(songs, filters), sortOrder).map(song => <SongCard song={song} key={song.id} />)}
             </div>
         </StyledCatalog>
     );

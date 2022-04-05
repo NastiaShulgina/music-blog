@@ -38,4 +38,9 @@ export const StyledHeader = styled.header`
         font-family: 'Syne Tactile', cursive;
         font-size: 1.5em;
     }
+
+    /* .my-list::after {
+        content: "11";
+        margin-right: -10px;
+    } */
 `

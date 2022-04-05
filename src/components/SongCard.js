@@ -7,7 +7,7 @@ const SongCard = (props) => {
     return (
         <StyledSongCard>
             <img src={props.song.photoUrl} alt="album-photo" />
-            <h2>{props.song.name}</h2>
+            <h2>{props.song.name} <span>({props.song.year})</span></h2>
             <i>{props.song.artist}</i><hr />
             <p>{props.song.chorus}...</p>
             <Link to={`/catalog/${props.song.id}`}>

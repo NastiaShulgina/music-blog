@@ -6,10 +6,6 @@ export const StyledForm = styled.form`
     justify-content: space-between;
     align-items: center;
 
-    div:nth-child(3n) {
-        display: flex;
-    }
-
     label, p {
         padding-right: 10px;
         font-size: 17px;
