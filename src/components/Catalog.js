@@ -1,4 +1,3 @@
-import { songs } from './data';
 import Form from './Form';
 import { StyledCatalog } from "./styles/Catalog.styled.js";
 import SongCard from './SongCard';
@@ -40,7 +39,7 @@ function sortSongs(filteredSongs, sortOrder) {
 //     return yearSet.size > 1
 // }
 
-const Catalog = ({ searchTerm, artist, setArtist, album, setAlbum, language, setLanguage }) => {
+const Catalog = ({ songs, searchTerm, artist, setArtist, album, setAlbum, language, setLanguage }) => {
     const filters = {
         searchTermFilter: searchTerm,
         artistFilter: artist,

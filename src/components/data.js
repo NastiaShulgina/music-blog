@@ -76,7 +76,7 @@ export function generateSongs() {
     const songs = justSongs.map(song => {
         song.artist = albums.find(e => e.name === song.album).artist
         song.photoUrl = ALBUM_PHOTOS[song.album]
-        song.liked = false
+        // song.liked = false
         return song;
     })
     return songs;

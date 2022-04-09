@@ -8,6 +8,7 @@ import Catalog from './components/Catalog';
 import ToListen from './components/ToListen';
 import { useState } from "react";
 import SongDetails from './components/SongDetails';
+import { songs as defaultSongs } from './components/data';
 
 const theme = {
   colors: {
@@ -28,27 +29,28 @@ function App() {
   const [artist, setArtist] = useState("");
   const [album, setAlbum] = useState("");
   const [language, setLanguage] = useState("");
+  const [songs, setSongs] = useState(defaultSongs);
 
   return (
     <Router>
       <ThemeProvider theme={theme}>
-          <GlobalStyles />
-          <Header searchTerm={searchTerm} setSearchTerm={setSearchTerm}/>
-          <Switch>
-            <Route exact path="/">
-              <Landing />
-            </Route>
-            <Route exact path="/catalog">
-              <Catalog searchTerm={searchTerm} setSearchTerm={setSearchTerm} artist={artist} setArtist={setArtist} album={album} setAlbum={setAlbum} language={language} setLanguage={setLanguage}/>
-            </Route>
-            <Route exact path="/catalog/:id">
-              <SongDetails />
-            </Route>
-            <Route path="/to-listen">
-              <ToListen />
-            </Route>
-          </Switch>
-          <Footer />
+        <GlobalStyles />
+        <Header searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
+        <Switch>
+          <Route exact path="/">
+            <Landing />
+          </Route>
+          <Route exact path="/catalog">
+            <Catalog songs={songs} searchTerm={searchTerm} setSearchTerm={setSearchTerm} artist={artist} setArtist={setArtist} album={album} setAlbum={setAlbum} language={language} setLanguage={setLanguage} />
+          </Route>
+          <Route exact path="/catalog/:id">
+            <SongDetails songs={songs} setSongs={setSongs} />
+          </Route>
+          <Route path="/to-listen">
+            <ToListen />
+          </Route>
+        </Switch>
+        <Footer />
       </ThemeProvider>
     </Router>
   );
