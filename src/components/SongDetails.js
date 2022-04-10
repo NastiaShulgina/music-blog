@@ -38,7 +38,7 @@ const SongDetails = ({ songs, setSongs }) => {
                     <h2>{song.artist}</h2>
                     <i>Album: {song.album}</i>
                     <div className="chorus">
-                        <img src="http://www.clker.com/cliparts/0/m/m/C/F/o/red-quotation-marks-hi.png" alt="dpoble-quotes" className="quotes" />
+                        <img src="http://www.clker.com/cliparts/0/m/m/C/F/o/red-quotation-marks-hi.png" alt="double-quotes" className="quotes" />
                         <i>{song.chorus}...</i>
                     </div>
                 </div>

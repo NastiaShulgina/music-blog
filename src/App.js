@@ -21,27 +21,20 @@ const theme = {
   }
 }
 
-// const UserContext = createContext();
-
 function App() {
-
-  const [searchTerm, setSearchTerm] = useState("");
-  const [artist, setArtist] = useState("");
-  const [album, setAlbum] = useState("");
-  const [language, setLanguage] = useState("");
   const [songs, setSongs] = useState(defaultSongs);
 
   return (
     <Router>
       <ThemeProvider theme={theme}>
         <GlobalStyles />
-        <Header searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
+        <Header />
         <Switch>
           <Route exact path="/">
             <Landing />
           </Route>
           <Route exact path="/catalog">
-            <Catalog songs={songs} searchTerm={searchTerm} setSearchTerm={setSearchTerm} artist={artist} setArtist={setArtist} album={album} setAlbum={setAlbum} language={language} setLanguage={setLanguage} />
+            <Catalog songs={songs} />
           </Route>
           <Route exact path="/catalog/:id">
             <SongDetails songs={songs} setSongs={setSongs} />

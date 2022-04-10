@@ -1,45 +1,33 @@
 import Form from './Form';
 import { StyledCatalog } from "./styles/Catalog.styled.js";
 import SongCard from './SongCard';
-import { useState, useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 
 
 function filterSongs(songs, filters) {
-    const filteredSongs = songs.filter((song) => {
-        if (filters.searchTermFilter === "" || song.name.toLowerCase().includes(filters.searchTermFilter.toLowerCase())) {
-            if (filters.artistFilter === "" || song.artist.toLowerCase() === filters.artistFilter.toLowerCase()) {
-                if (filters.albumFilter === "" || song.album.toLowerCase() === filters.albumFilter.toLowerCase()) {
-                    if (filters.languageFilter === "" || song.language.toLowerCase() === filters.languageFilter.toLowerCase()) {
-                        return song
-                    }
-                }
-            }
-        }
+    return songs.filter((song) => {
+        return (
+            (filters.searchTermFilter === "" || song.name.toLowerCase().includes(filters.searchTermFilter.toLowerCase()))
+            && (filters.artistFilter === "" || song.artist.toLowerCase() === filters.artistFilter.toLowerCase())
+            && (filters.albumFilter === "" || song.album.toLowerCase() === filters.albumFilter.toLowerCase())
+            && (filters.languageFilter === "" || song.language.toLowerCase() === filters.languageFilter.toLowerCase()))
     })
-    return filteredSongs
 }
 
-let sortedSongs = []
 function sortSongs(filteredSongs, sortOrder) {
     if (sortOrder === "") return filteredSongs
-    else if (sortOrder === "Newest to oldest") {
-        sortedSongs = filteredSongs.concat().sort((a, b) =>  b.year - a.year);
-        return sortedSongs
+
+    if (sortOrder === "Newest to oldest") {
+        return filteredSongs.sort((a, b) => b.year - a.year);
     } else {
-        sortedSongs = filteredSongs.concat().sort((a, b) =>  a.year - b.year);
-        return sortedSongs
+        return filteredSongs.sort((a, b) => a.year - b.year);
     }
 }
 
-// function isMoreThanOneYear(sortedSongs) {
-//     console.log(sortedSongs);
-//     let yearSet = new Set();
-//     sortedSongs.forEach(song => yearSet.add(song.year))
-//     console.log(yearSet);
-//     return yearSet.size > 1
-// }
+const Catalog = ({ songs }) => {
+    const { searchTerm, artist, album, language, sortOrder } = useSelector((state) => state.form)
+    const dispatch = useDispatch();
 
-const Catalog = ({ songs, searchTerm, artist, setArtist, album, setAlbum, language, setLanguage }) => {
     const filters = {
         searchTermFilter: searchTerm,
         artistFilter: artist,
@@ -47,22 +35,20 @@ const Catalog = ({ songs, searchTerm, artist, setArtist, album, setAlbum, langua
         languageFilter: language
     }
 
-    const [sortOrder, setSortOrder] = useState("");
-
-    useEffect(() => {
-        setArtist("")
-        setAlbum("")
-        setSortOrder("")
-        setLanguage("")
-    }, [])
+    // useEffect(() => {
+    //     dispatch(setSearchTerm(""))
+    //     dispatch(setArtist(""))
+    //     dispatch(setAlbum(""))
+    //     dispatch(setLanguage(""))
+    // }, [])
 
     return (
         <StyledCatalog>
             <hr />
-            <Form artist={artist} album={album} sortOrder={sortOrder} setArtist={setArtist} setAlbum={setAlbum} setSortOrder={setSortOrder} setLanguage={setLanguage} />
+            <Form />
             <br /><hr />
             <div className="songs">
-                { sortSongs(filterSongs(songs, filters), sortOrder).map(song => <SongCard song={song} key={song.id} />)}
+                {sortSongs(filterSongs(songs, filters), sortOrder).map(song => <SongCard song={song} key={song.id} />)}
             </div>
         </StyledCatalog>
     );

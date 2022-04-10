@@ -1,22 +1,11 @@
 import { useState } from "react";
-import { useEffect } from "react";
 
-const PinkSelect = ({ artist, sortOrder, name, options, label, onChange, cancelAlbum, cancelSorting, cancelLanguage }) => {
+const PinkSelect = ({ name, options, label, onChange }) => {
     const [value, setValue] = useState("")
     const changeHandler = event => {
         setValue(event.target.value);
-        if (onChange) onChange(event.target.value);
-        if (cancelAlbum) cancelAlbum('');
-        if (cancelLanguage) cancelLanguage('');
-        // if (cancelSorting) cancelSorting('');
-        // console.log(sortOrder);
-        // if (artist) console.log(artist);
+        if (onChange) onChange(event);
     }
-
-    // useEffect(() => {
-    //     document.getElementsByTagName('option')[0].selected = 'selected'
-    //     console.log("hhhh");
-    // }, [artist])
 
     return (
         <div>
