@@ -2,19 +2,20 @@ import { useParams } from "react-router-dom/cjs/react-router-dom.min";
 import { StyledSongDetails } from "./styles/SongDetails.styled";
 import { StyledButton } from "./styles/Button.styled";
 import { Link } from "react-router-dom";
+import { useSelector, useDispatch } from 'react-redux';
 import heart from "../images/heart.png";
+import { setSongLike } from "../redux/form";
 
-const SongDetails = ({ songs, setSongs }) => {
+const SongDetails = () => {
     const { id } = useParams();
+    const { songs } = useSelector((state) => state.form)
+    console.log(songs);
+    const dispatch = useDispatch();
     const song = songs.find(s => s.id === Number(id))
+    console.log(song);
 
     function changeLikedState() {
-        setSongs(prev => {
-            return prev.map(song => {
-                if (song.id === Number(id)) return { ...song, liked: !song.liked};
-                return song;
-            })
-        })
+        dispatch(setSongLike(id))
     }
 
     const listenLaterString = "Listen later";

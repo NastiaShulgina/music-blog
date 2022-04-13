@@ -6,9 +6,7 @@ import Landing from './components/Landing';
 import GlobalStyles from './components/styles/Globals';
 import Catalog from './components/Catalog';
 import ToListen from './components/ToListen';
-import { useState } from "react";
 import SongDetails from './components/SongDetails';
-import { songs as defaultSongs } from './components/data';
 
 const theme = {
   colors: {
@@ -22,8 +20,6 @@ const theme = {
 }
 
 function App() {
-  const [songs, setSongs] = useState(defaultSongs);
-
   return (
     <Router>
       <ThemeProvider theme={theme}>
@@ -34,10 +30,10 @@ function App() {
             <Landing />
           </Route>
           <Route exact path="/catalog">
-            <Catalog songs={songs} />
+            <Catalog />
           </Route>
           <Route exact path="/catalog/:id">
-            <SongDetails songs={songs} setSongs={setSongs} />
+            <SongDetails />
           </Route>
           <Route path="/to-listen">
             <ToListen />

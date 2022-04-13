@@ -9,14 +9,16 @@ export const formSlice = createSlice({
         album: '',
         language: '',
         sortOrder: '',
-        songs: defaultSongs
+        songs: defaultSongs,
     },
     reducers: {
         setSearchTerm: (state, action) => {
             state.searchTerm = action.payload
         },
         setArtist: (state, action) => {
+            console.log(state.artist);
             state.artist = action.payload
+            console.log(state.artist);
             state.album = ''
             state.language = ''
         },
@@ -29,12 +31,16 @@ export const formSlice = createSlice({
         setSortOrder: (state, action) => {
             state.sortOrder = action.payload
         },
-        setSong: (state, action) => {
-            state.songs = action.payload
+        setSongLike: (state, action) => {
+            state.songs = state.songs.map(song => {
+                if (song.id === Number(action.payload)) return { ...song, liked: !song.liked };
+                console.log(song);
+                return song;
+            })
         },
     },
 })
 
-export const { setSearchTerm, setArtist, setAlbum, setLanguage, setSortOrder, setSong } = formSlice.actions;
+export const { setSearchTerm, setArtist, setAlbum, setLanguage, setSortOrder, setSongLike } = formSlice.actions;
 
 export default formSlice.reducer;

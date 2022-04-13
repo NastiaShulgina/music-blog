@@ -1,5 +1,4 @@
 import { StyledSongCard } from "./styles/SongCard.styled";
-import { songs } from "./data";
 import { StyledButton } from "./styles/Button.styled";
 import { Link } from "react-router-dom";
 

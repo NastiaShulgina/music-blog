@@ -24,9 +24,8 @@ function sortSongs(filteredSongs, sortOrder) {
     }
 }
 
-const Catalog = ({ songs }) => {
-    const { searchTerm, artist, album, language, sortOrder } = useSelector((state) => state.form)
-    const dispatch = useDispatch();
+const Catalog = () => {
+    const { searchTerm, artist, album, language, sortOrder, songs } = useSelector((state) => state.form)
 
     const filters = {
         searchTermFilter: searchTerm,
