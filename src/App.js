@@ -35,7 +35,7 @@ function App() {
           <Route exact path="/catalog/:id">
             <SongDetails />
           </Route>
-          <Route path="/to-listen">
+          <Route exact path="/to-listen">
             <ToListen />
           </Route>
         </Switch>

@@ -9,11 +9,8 @@ import { setSongLike } from "../redux/form";
 const SongDetails = () => {
     const { id } = useParams();
     const { songs } = useSelector((state) => state.form)
-    console.log(songs);
     const dispatch = useDispatch();
     const song = songs.find(s => s.id === Number(id))
-    console.log(song);
-
     function changeLikedState() {
         dispatch(setSongLike(id))
     }

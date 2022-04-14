@@ -1,7 +1,7 @@
 import Form from './Form';
 import { StyledCatalog } from "./styles/Catalog.styled.js";
 import SongCard from './SongCard';
-import { useSelector, useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
 
 
 function filterSongs(songs, filters) {

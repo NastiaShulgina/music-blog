@@ -7,10 +7,6 @@ export const StyledSongDetails = styled.div`
     justify-content: space-evenly;
     white-space: pre-wrap;
 
-    /* audio::-webkit-media-controls-panel {
-        border-radius: 50%;
-        background-color: blue;
-    } */
     .left {
         justify-content: space-between;
     }

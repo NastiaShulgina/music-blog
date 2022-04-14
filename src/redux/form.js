@@ -34,7 +34,6 @@ export const formSlice = createSlice({
         setSongLike: (state, action) => {
             state.songs = state.songs.map(song => {
                 if (song.id === Number(action.payload)) return { ...song, liked: !song.liked };
-                console.log(song);
                 return song;
             })
         },
@@ -44,3 +43,4 @@ export const formSlice = createSlice({
 export const { setSearchTerm, setArtist, setAlbum, setLanguage, setSortOrder, setSongLike } = formSlice.actions;
 
 export default formSlice.reducer;
+
