@@ -19,14 +19,18 @@ const PinkRadio = ({ type, label, name, songs, languages, onChange }) => {
             {availableLanguages.length === 1 ||
                 <div>
                     <p>{label}</p>
-                    <input checked={language===''} type={type} id='ANY' name={name} value='' onChange={event => { onChange(event) }} />
-                    <label htmlFor='ANY'>ANY</label><br />
-                    {availableLanguages.map(b => {
-                        return <div>
-                            <input type={type} id={b} name={name} value={b} onChange={event => { onChange(event) }} />
-                            <label htmlFor={b}>{b}</label><br />
+                    <div className="lang-buttons">
+                        <div>
+                            <input checked={language === ''} type={type} id='ANY' name={name} value='' onChange={event => { onChange(event) }} />
+                            <label htmlFor='ANY' id='any-label'>ANY</label>
                         </div>
-                    })}
+                        {availableLanguages.map(b => {
+                            return <div>
+                                <input type={type} id={b} name={name} value={b} onChange={event => { onChange(event) }} />
+                                <label htmlFor={b}>{b}</label>
+                            </div>
+                        })}
+                    </div>
                 </div>}
         </div>
     );

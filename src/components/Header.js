@@ -1,10 +1,12 @@
 import { StyledHeader } from "./styles/Header.styled";
-import { StyledButton } from "./styles/Button.styled";
 import logo from "../images/music-note.png";
-import { Link } from "react-router-dom";
+import menu from "../images/menu.png";
+import close from "../images/nav-close.png";
 import { useLocation } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { setSearchTerm } from "../redux/form"
+import NavLinks from "./NavLinks";
+import { useState } from "react";
 
 const Header = () => {
     const location = useLocation();
@@ -14,21 +16,36 @@ const Header = () => {
         dispatch(setSearchTerm(event.target.value))
     }
 
+
+    const [burgerOpened, setBurgerOpened] = useState(false)
+
     return (
-        <StyledHeader>
-            <div>
-                <img src={logo} alt="" />
-                <h1>music hub</h1>
+        <StyledHeader height={burgerOpened ? "100%" : null}>
+            <div className="header">
+                <div className="logo">
+                    <img src={logo} alt="" />
+                    <h1>music hub</h1>
+                </div>
+                <div className="nav-links">
+                    <NavLinks />
+                </div>
+                {location.pathname === "/catalog"
+                    ?
+                    <div className="header-search">
+                        <input type="text" placeholder="Search the song name..." onChange={handleSearch} />
+                    </div>
+                    : null
+                }
+                <div className="burger-button" onClick={() => setBurgerOpened(!burgerOpened)}>
+                    {burgerOpened ?
+                        <img src={close} alt="close" className="close-menu" />
+                        : <img src={menu} alt="burger-menu" className="menu" />
+                    }
+                </div>
             </div>
-            <div>
-                <Link to="/"><StyledButton brColor="#6F2232">Home</StyledButton></Link>
-                <Link to="/catalog"><StyledButton brColor="#950740">Catalog</StyledButton></Link>
-                <Link to="/to-listen"><StyledButton brColor="#C3073F" className="my-list">To listen</StyledButton></Link>
-            </div>
-            {location.pathname === "/catalog"
-                ?
-                <div>
-                    <input type="text" placeholder="Search the song name..." onChange={handleSearch}/>
+            {burgerOpened ?
+                <div className="burger-nav-links">
+                    <NavLinks />
                 </div>
                 : null
             }

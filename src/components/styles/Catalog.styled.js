@@ -14,4 +14,10 @@ export const StyledCatalog = styled.div`
         align-self: center;
         flex-wrap: wrap;
     }
+
+    @media screen and (max-width: 758px){
+        .songs {
+            margin: 15px 0 -180px;
+        }
+    }
 `

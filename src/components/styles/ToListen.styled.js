@@ -1,9 +1,10 @@
 import styled from "styled-components";
 
 export const StyledToListen = styled.div`
-    padding-top: 100px;
+    padding: 100px 30px;
     display: flex;
-    justify-content: center;
+    justify-content: space-around;
+    max-width: 100%;
     
     .playing-now {
         display: flex;
@@ -14,6 +15,47 @@ export const StyledToListen = styled.div`
         display: flex;
         flex-direction: column;
         margin-left: 40px;
+    }
+
+    .selections {
+        /* margin-left: -80px; */
+        min-width: 30%;
+
+    }
+
+    button {
+        width: 100px;
+        height: 100px;
+        overflow: hidden;
+        background-color: #1A1A1D;
+        border: none;
+        opacity: 0.8;
+        border-radius: 100%;
+    }
+
+    .open-selection {
+        position: fixed;
+        left: 0;
+        top: 46%;
+    }
+
+    .close-selection {
+        margin-top: 30px;
+        margin-right: 45px;
+    }
+
+    .close-selection, .close {
+        width: 32px;
+        height: 32px;
+        border-radius: 0;
+        padding: 0;
+        top: 0;
+        float: right;
+    }
+
+    .open-selection:hover, .close-selection:hover {
+        cursor: pointer;
+        left: 0.5%;
     }
 
     audio {

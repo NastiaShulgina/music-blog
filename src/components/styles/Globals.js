@@ -5,8 +5,10 @@ const GlobalStyles = createGlobalStyle`
 
     html, body {
         height: 100%;
+        width: 100%;
         margin: 0;
         padding: 0;
+        /* max-width: max-content; */
     }
 
     * {
@@ -19,6 +21,7 @@ const GlobalStyles = createGlobalStyle`
         font-size: 20px;
         font-weight: lighter;
         color: #fff1e6;
+        width: 100%;
     }
 
     hr {

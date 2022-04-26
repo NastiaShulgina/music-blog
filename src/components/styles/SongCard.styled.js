@@ -2,14 +2,16 @@ import styled from "styled-components";
 
 export const StyledSongCard = styled.div`
     white-space: pre-wrap;
-    width: 18%;
+    /* width: 230px; */
 
     box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.5);
-    max-width: 330px;
+    min-width: 230px;
+    max-width: 230px;
     margin: 10px 40px;
     text-align: center;
     min-height: max-content;
     font-size: 1rem;
+    flex: 1;
 
     position: relative;
     /* background-color: ${({ theme }) => theme.colors.burgundy + 'AA'}; */
@@ -64,5 +66,14 @@ export const StyledSongCard = styled.div`
         position: sticky;
         max-width: 100%;
         height:auto;
+    }
+
+    @media screen and (max-width: 680px){
+        max-width: 150px;
+        min-width: 150px;
+    }
+    @media screen and (max-width: 522px){
+        max-width: 230px;
+        min-width: 230px;
     }
 `
